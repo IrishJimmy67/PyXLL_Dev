@@ -92,16 +92,15 @@ def db_test():
 
 
 @xl_macro("string ReportName:")
-def py_macro3(ReportName ="Demonstration Report"):
+def py_macro3(ReportName="Demonstration Report"):
     # Get the Excel.Application instance
-    #    xlcAlert("Hello from macro3")
+    xlcAlert("Hello from macro3")
 
     xl = xl_app()
-#    xlcAlert("Orientation and Margins Begin")
+#   xlcAlert("Orientation and Margins Begin")
     pic_path = "D:\Development\pyXll_Test\Haverford_CORP_TAG_B_resize.jpg"
 
     list_RHeader_Cells = [
-        {"rangeStart": "A1", "rangeEnd": "D4", "H_Align": constants.xlLeft, "V_Align": constants.xlTop, "IsBold": False},
         {"rangeStart": "J1", "rangeEnd": "N1", "H_Align": constants.xlRight, "V_Align": constants.xlTop, "IsBold": True},
         {"rangeStart": "J2", "rangeEnd": "N2", "H_Align": constants.xlRight, "V_Align": constants.xlTop, "IsBold": True},
         {"rangeStart": "J3", "rangeEnd": "N3", "H_Align": constants.xlRight, "V_Align": constants.xlTop, "IsBold": True},
@@ -135,6 +134,10 @@ def py_macro3(ReportName ="Demonstration Report"):
     xl_Rows = sheet.Rows("5:7")
     xl_Rows.Select()
     xl.Selection.RowHeight = 8.25
+
+    xl_Rows = sheet.Rows("10:60")
+    xl_Rows.Select()
+    xl.Selection.RowHeight = 9.75
 
     # Call the 'Range' method on the Sheet
     # Merge all necessary cells
