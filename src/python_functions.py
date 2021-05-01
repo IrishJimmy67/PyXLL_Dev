@@ -63,6 +63,21 @@ def plotly_plot():
     plot(fig)
 
 
+
+@xl_func
+def plotly_plot2():
+    fig = go.Figure(data=[go.Table(header=dict(values=['A Scores', 'B Scores']),
+                 cells=dict(values=[[100, 90, 80, 90], [95, 85, 75, 95]]))
+                     ])
+    fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        paper_bgcolor="LightSteelBlue",
+        automargin=True,
+    )
+
+    plot(fig)
+
+
 # The DataFrameFormatter object can be used for format DataFrames returned to Excel from PyXLL.
 df_formatter = DataFrameFormatter()
 
