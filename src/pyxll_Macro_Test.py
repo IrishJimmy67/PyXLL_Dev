@@ -1,5 +1,6 @@
-
-from pyxll import xl_macro, xl_app, Formatter, XLCell, xlcAlert
+import pandas as pd
+import numpy as np
+from pyxll import xl_macro, xl_app, Formatter, XLCell, xlcAlert, xl_menu
 from win32com.client import constants
 
 
@@ -10,7 +11,12 @@ def popup_messagebox():
 
     tempRange = 'B1'
     tempRange2 = 'E2'
+    tempRange3 = 'A6:B7'
     searchRange = 'A1:D4'
+
+    x = pd.DataFrame({"A": ['Jim', 6], "B": ['Paula', 8]}, index=None)
+    arr_x = x.to_numpy()
+
     # 'xl' is an instance of the Excel.Application object
 
     # Get the current ActiveSheet (same as in VBA)
@@ -27,6 +33,15 @@ def popup_messagebox():
     xl_range = sheet.Range(tempRange2)
     xl_range.Select()
     xl_range.Formula = "=MIN(COLUMN(" + searchRange + "))+COLUMNS(" + searchRange + ")-1"
+
+    xl_range = sheet.Range(tempRange3)
+    xl_range.Select()
+    xl_range.Value = arr_x
+
+@xl_menu("Jim's item", menu="JL")
+def my_menu_item():
+    xlcAlert("new menu example")
+
 # def format_cover_page():
 #     app = xl_app()
 #     selection = app.Selection.
