@@ -14,7 +14,7 @@ def popup_messagebox():
     tempRange3 = 'A6:B7'
     searchRange = 'A1:D4'
 
-    x = pd.DataFrame({"A": ['Jim', 6], "B": ['Paula', 8]}, index=None)
+    x = pd.DataFrame({"A": ['Jim', 6], "B": ['Paula', 9]}, index=None)
     arr_x = x.to_numpy()
 
     # 'xl' is an instance of the Excel.Application object
